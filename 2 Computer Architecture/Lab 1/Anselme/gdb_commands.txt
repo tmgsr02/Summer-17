@@ -1,0 +1,27 @@
+1. Passing command line arguments to a program when using gdb:
+> Type the command at the bottom window on (gdb) prompt line
+
+2. Set a breakpoint if and only if a set of conditions is true
+>  break <source_file>:<breakpoint> if <conditional expression>
+e.g. (gdb) break hello.c:6 if i >= ARRAYSIZE
+
+3. Executing the next line of code (= instruction) after a breakpoint
+> (gdb) next
+
+4. If the next line of code is a function call, you'll execute the whole function call at once if you use your answer to #3. How do you tell GDB that you want to debug the code inside the function instead?
+> backtrace? 
+
+5. How do you resume a program after stopping at a breakpoint?
+> continue
+
+6. How can you see the value of a variable (or even an expression like 1+2) in gdb?
+> (gdb) print <variable>
+
+7. How do you configure gdb so it prints the value of a variable after every step?
+> (gdb) watch <variable>
+
+8. How do you print a list of all variables and their values in the current function?
+> (gdb) info locals
+
+9. How do you exit gdb
+> (gdb) q 
