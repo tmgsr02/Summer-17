@@ -1,0 +1,4 @@
+I didn't solve the third question. 
+I could not find the starter files and/or instructions 
+for filling the vector_delete() and vector_set() functions. 
+A.M.

@@ -3,7 +3,7 @@
 
 #include "vector.h"
 
-int main(void) {
+int main(int argc, char **argv) {
 	vector_t *v;
 	
 	printf("Calling vector_new()\n");
@@ -22,7 +22,6 @@ int main(void) {
 
 	printf("Doing a bunch of vector_set()s\n");
 	vector_set(v, 0, 98);
-	vector_set(v, 5, 42);
 	vector_set(v, 11, 15);
 	vector_set(v, 15, -23);
 	vector_set(v, 24, 65);
