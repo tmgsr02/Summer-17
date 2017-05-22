@@ -1,3 +1,4 @@
+import sys
 # Q2
 def make_buzzer(n):
     """ Returns a function that prints numbers in a specified
@@ -16,15 +17,17 @@ def make_buzzer(n):
     8
     9
     """
-    divisors = [x for x in range(n) if n % x == 0]
-    for i in range(n):
-        if i in divisors:
-            print('Buzz!\n')
-        else:
-            print(i)
+    def print_range(y):
+        divisors = [x for x in range(0, y) if x % n == 0]
+        for i in range(y):
+            if i in divisors:
+                print('Buzz!')
+            else:
+                print(i)
     
-    return 
+    return print_range 
 
+sys.exit()
 # Q4
 def f1():
     """
