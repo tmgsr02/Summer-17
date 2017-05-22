@@ -16,36 +16,43 @@ def make_buzzer(n):
     8
     9
     """
-    "*** YOUR CODE HERE ***"
+    def get_range(x):
+        divisors = [i for i in range(x) if i%n == 0]
+        for c in range(x):
+            if c in divisors:
+                print('Buzz!')
+            else:
+                print(c)
 
+    return 
 # Q4
 def f1():
     """
     >>> f1()
     3
     """
-    "*** YOUR CODE HERE ***"
+    return lambda: 3
 
 def f2():
     """
     >>> f2()()
     3
     """
-    "*** YOUR CODE HERE ***"
+    return lambda: lambda:3
 
 def f3():
     """
     >>> f3()(3)
     3
     """
-    "*** YOUR CODE HERE ***"
+    return lambda: lambda x:x
 
 def f4():
     """
     >>> f4()()(3)()
     3
     """
-    "*** YOUR CODE HERE ***"
+    return lambda: lambda: lambda x: lambda: x
 
 # Q6
 def sum(n):
@@ -57,7 +64,10 @@ def sum(n):
     >>> sum(5)  # 1 + 2 + 3 + 4 + 5
     15
     """
-    "*** YOUR CODE HERE ***"
+    if n == 1:
+        return 1
+    else:
+        return n + sum(n-1)
 
 # Q7
 
