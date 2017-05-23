@@ -24,35 +24,35 @@ def make_buzzer(n):
             else:
                 print(c)
 
-    return 
+    return get_range 
 # Q4
 def f1():
     """
     >>> f1()
     3
     """
-    return lambda: 3
+f1 =  lambda: 3
 
 def f2():
     """
     >>> f2()()
     3
     """
-    return lambda: lambda:3
+    return  lambda:3
 
 def f3():
     """
     >>> f3()(3)
     3
     """
-    return lambda: lambda x:x
+    return lambda x:x
 
 def f4():
     """
     >>> f4()()(3)()
     3
     """
-    return lambda: lambda: lambda x: lambda: x
+    return lambda: lambda x: lambda: x
 
 # Q6
 def sum(n):
@@ -82,6 +82,8 @@ def sum_every_other_number(n):
     """
     if n == 0:
         return 0
+    if n == 1:
+        return 1
     else:
         return n + sum_every_other_number(n - 2)
 
@@ -97,7 +99,7 @@ def fibonacci(n):
     elif n == 1:
         return 1
     else:
-        fibonacci(n - 1) + fibonacci(n - 2)
+        return fibonacci(n - 1) + fibonacci(n - 2)
 
 
 # Q8
@@ -116,5 +118,12 @@ def hailstone(n):
     >>> a
     7
     """
-    "*** YOUR CODE HERE ***"
+    print(n) 
+    if n == 1:
+        return 1
 
+    elif n % 2 == 0:
+        return 1 + hailstone(n//2)
+    else:
+        return 1 + hailstone(n * 3 + 1)
+    
