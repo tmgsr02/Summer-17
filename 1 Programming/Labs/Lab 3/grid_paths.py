@@ -1,3 +1,4 @@
+from fractions import Fraction
 def paths(m, n):
     """Return the number of paths from one corner of an
     M by N grid to the opposite corner.
@@ -11,9 +12,9 @@ def paths(m, n):
     >>> paths(1, 157)
     1
     """
-    if m == 0 and n == 0: 
-        return 0
+    if m == 1 or n == 1: 
+        return Fraction(1, 1)
     else:
-        return  paths(m-1, n) + paths(m, n-1)
+        return  Fraction(m+n-2, m-1) * paths(m, n-1)
     
     
