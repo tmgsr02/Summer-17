@@ -11,10 +11,12 @@ def paths(m, n):
     1
     >>> paths(1, 157)
     1
+    >>> paths(3, 3)
+    6
     """
     if m == 1 or n == 1: 
-        return Fraction(1, 1)
+        return int(Fraction(1, 1))
     else:
-        return  Fraction(m+n-2, m-1) * paths(m, n-1)
+        return  int(Fraction(m+n-2, n-1) * paths(m, n-1))
     
     
