@@ -19,10 +19,10 @@ int check_initialized(void) {
 int check_filename(const char* filename) {
   if (strlen(filename) > FILENAME_SIZE-1 || strlen(filename) == 0)
     return 0;
-
+  
   if (filename[0] == '.')
     return 0;
-
+  
   struct stat s;
   int ret_code = stat(filename, &s);
   return (ret_code != -1 && !(S_ISDIR(s.st_mode)));
@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
         }
 
         if (strcmp(argv[1], "add") == 0 || strcmp(argv[1], "rm") == 0) {
-
+          
           if (argc < 3 || !check_filename(argv[2])) {
             fprintf(stderr, "ERROR: No or invalid filname given\n");
             return 1;

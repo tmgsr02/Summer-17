@@ -63,7 +63,7 @@ int beargit_init(void) {
 int beargit_add(const char* filename) {
   FILE* findex = fopen(".beargit/.index", "r");
   FILE *fnewindex = fopen(".beargit/.newindex", "w");
-
+  
   char line[FILENAME_SIZE];
   while(fgets(line, sizeof(line), findex)) {
     strtok(line, "\n");
@@ -96,9 +96,31 @@ int beargit_add(const char* filename) {
 
 int beargit_rm(const char* filename) {
   /* COMPLETE THE REST */
+  FILE * findex = fopen(".beargit/.index", "r");
+  FILE * fnewindex = fopen(".beargit/.newindex", "w");
+  int found = 0;
 
+  char line[FILENAME_SIZE];
+  while(fgets(line, sizeof(line), findex)) {
+    strtok(line, "\n");
+    if (strcmp(line, filename) != 0) {
+      fprintf(fnewindex, "%s\n", line);
+    }
+    else {
+      found = 1;
+    }
+  }
+  if (found == 0) {
+    fprintf(stderr, "File %s not tracked\n", filename);
+    return 1;
+  }
+  fclose(findex);
+  fclose(fnewindex);
+  
+  fs_mv(".beargit/.newindex", ".beargit/.index");
   return 0;
 }
+
 
 /* beargit commit -m <msg>
  *
@@ -110,7 +132,10 @@ const char* go_bears = "GO BEARS!";
 
 int is_commit_msg_ok(const char* msg) {
   /* COMPLETE THE REST */
-  return 0;
+  if (strcmp(go_bears, msg) == 0) 
+    return 0;
+  else
+    return 1;
 }
 
 void next_commit_id(char* commit_id) {
@@ -140,7 +165,18 @@ int beargit_commit(const char* msg) {
 
 int beargit_status() {
   /* COMPLETE THE REST */
+  FILE * findex = fopen(".beargit/.index", "r");
+  char * pch; 
+  int i = 0;
 
+  char line[FILENAME_SIZE];
+  while(fgets(line, sizeof(line), findex)) {
+    pch = strtok(line, "\n");
+    printf("%s\n", pch);
+    i++;
+  }
+  printf("\n");
+  printf("%d files total\n", i);    
   return 0;
 }
 
