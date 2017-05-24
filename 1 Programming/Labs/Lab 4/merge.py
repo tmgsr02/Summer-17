@@ -16,7 +16,7 @@ def merge(lst1, lst2):
     else: 
         min_val = min(combo)
         if min_val in lst1: lst1.remove(min_val)
-        if min_val in lst2: lst2.remove(min_val)
+        else: lst2.remove(min_val)
         return [min_val] + merge(lst1, lst2)
 
      
