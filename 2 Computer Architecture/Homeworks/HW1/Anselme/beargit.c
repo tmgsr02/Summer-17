@@ -99,10 +99,11 @@ int beargit_rm(const char* filename) {
   FILE * findex = fopen(".beargit/.index", "r");
   FILE * fnewindex = fopen(".beargit/.newindex", "w");
   int found = 0;
+  char * pch;  
 
   char line[FILENAME_SIZE];
   while(fgets(line, sizeof(line), findex)) {
-    strtok(line, "\n");
+    pch = strtok(line, "\n");
     if (strcmp(line, filename) != 0) {
       fprintf(fnewindex, "%s\n", line);
     }
@@ -168,8 +169,10 @@ int beargit_status() {
   FILE * findex = fopen(".beargit/.index", "r");
   char * pch; 
   int i = 0;
-
   char line[FILENAME_SIZE];
+
+  printf("Tracked Files:\n\n");
+
   while(fgets(line, sizeof(line), findex)) {
     pch = strtok(line, "\n");
     printf("%s\n", pch);
