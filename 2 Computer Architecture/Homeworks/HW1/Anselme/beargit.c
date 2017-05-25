@@ -98,7 +98,7 @@ int beargit_rm(const char* filename) {
   /* COMPLETE THE REST */
   FILE * findex = fopen(".beargit/.index", "r");
   FILE * fnewindex = fopen(".beargit/.newindex", "w");
-  int found = 0;
+  int found = 1;
   char * pch;  
 
   char line[FILENAME_SIZE];
@@ -108,10 +108,10 @@ int beargit_rm(const char* filename) {
       fprintf(fnewindex, "%s\n", line);
     }
     else {
-      found = 1;
+      found = 0;
     }
   }
-  if (found == 0) {
+  if (!found) {
     fprintf(stderr, "File %s not tracked\n", filename);
     return 1;
   }
@@ -133,10 +133,16 @@ const char* go_bears = "GO BEARS!";
 
 int is_commit_msg_ok(const char* msg) {
   /* COMPLETE THE REST */
-  if (strcmp(go_bears, msg) == 0) 
-    return 0;
-  else
+  int i = 0;
+  if (sizeof(go_bears != sizeof(msg))) {
     return 1;
+  }
+  while(i < sizeof(go_bears)) {
+    if (msg[i] != go_bears[i]) {
+      return 1;
+    }
+  }
+  return 0;
 }
 
 void next_commit_id(char* commit_id) {
